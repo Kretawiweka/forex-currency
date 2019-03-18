@@ -1,7 +1,7 @@
 import React from "react";
-import { Typography, TextField } from "@material-ui/core";
+import { Typography, TextField, Button } from "@material-ui/core";
 
-import { InputContent } from "./styled";
+import { InputContent, MoreCurrency } from "./styled";
 import CardCurrency from "../../common/Card";
 
 class ForexCurrency extends React.Component {
@@ -28,6 +28,20 @@ class ForexCurrency extends React.Component {
           />
         </InputContent>
         <CardCurrency />
+        <MoreCurrency>
+          <form onSubmit="">
+            <TextField
+              label="Add More Currencies"
+              value={this.state.name}
+              onChange={this.handleChange("addMore")}
+              margin="normal"
+              className="input-field"
+            />
+            <Button variant="contained" color="primary">
+              Submit
+            </Button>
+          </form>
+        </MoreCurrency>
       </div>
     );
   }
