@@ -1,11 +1,14 @@
 import React from "react";
 import { Card, Typography } from "@material-ui/core";
 import RemoveCircle from "@material-ui/icons/RemoveCircle";
+import PropTypes from "prop-types";
 
 import { CardWrapper, CardContent } from "./styled";
 
 class CardCurrency extends React.Component {
   render() {
+    let exchangeCurrency = this.props.exchangeValue * this.props.value;
+    exchangeCurrency = Number(exchangeCurrency.toFixed(3));
     return (
       <CardWrapper>
         <Card>
@@ -14,21 +17,19 @@ class CardCurrency extends React.Component {
               <div style={{ flex: 1, margin: "0 1em" }}>
                 <div className="header">
                   <Typography style={{ flex: 1 }} variant="h6" gutterBottom>
-                    USD
+                    {this.props.currency}
                   </Typography>
                   <Typography variant="h6" gutterBottom>
-                    144.104
+                    {exchangeCurrency}
                   </Typography>
                 </div>
-                <Typography variant="subtitle2" gutterBottom>
-                  IDR - Indonesian Rupiah
-                </Typography>
                 <Typography variant="subtitle1" gutterBottom>
-                  1 USD = IDR 14.430
+                  1 {this.props.baseCurrency} = {this.props.currency}{" "}
+                  {this.props.value}
                 </Typography>
               </div>
               <div style={{ margin: "0 1em" }}>
-                <RemoveCircle />
+                <RemoveCircle onClick={this.props.removeCurrency} />
               </div>
             </div>
           </CardContent>
@@ -37,5 +38,13 @@ class CardCurrency extends React.Component {
     );
   }
 }
+
+CardCurrency.propTypes = {
+  currency: PropTypes.string,
+  value: PropTypes.number,
+  exchangeValue: PropTypes.number,
+  baseCurrency: PropTypes.string,
+  removeCurrency: PropTypes.func
+};
 
 export default CardCurrency;

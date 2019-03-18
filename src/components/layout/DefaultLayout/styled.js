@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     background-color: #ffffff;
     width: 480px;
     padding: 1em;
-    height: 100vh;
+    min-height: 100vh;
   }
 `;
 
