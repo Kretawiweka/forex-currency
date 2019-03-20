@@ -43,7 +43,7 @@ class ForexCurrency extends React.Component {
         });
       })
       .catch(err => {
-        console.error(err);
+        throw err;
       });
   }
   addCurrenciesList(event) {

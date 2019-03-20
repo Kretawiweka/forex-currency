@@ -4,11 +4,12 @@ import RemoveCircle from "@material-ui/icons/RemoveCircle";
 import PropTypes from "prop-types";
 
 import { CardWrapper, CardContent } from "./styled";
+import { numberWithCommas } from "../../../utils/helper";
 
 class CardCurrency extends React.Component {
   render() {
     let exchangeCurrency = this.props.exchangeValue * this.props.value;
-    exchangeCurrency = Number(exchangeCurrency.toFixed(3));
+    exchangeCurrency = numberWithCommas(Number(exchangeCurrency.toFixed(3)));
     return (
       <CardWrapper>
         <Card>
